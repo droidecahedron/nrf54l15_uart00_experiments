@@ -33,9 +33,9 @@ port.pin | desc
 > If you want to use 00, cut [SB16](https://docs.nordicsemi.com/bundle/ug_nrf54l15_dk/page/UG/nRF54L15_DK/hw_desription/solder_bridge.html), but you lose flash access.
 
 # Testing
-Use the board configurator to disable the LED power from PMIC if using `2.07`
-change the `TRANSMITTER` flag to be false on one DK that acts as receiver.
-conn 2.08 of `TRANSMITTER` DK to 2.07 or `RECEIVER` dk. Probe `2.08` on the `RECEIVER` dk to see an echo of what it's receiving.
+- Use the board configurator to disable the LED power from PMIC if using `2.07`.
+- Change the `TRANSMITTER` flag in `main.c` to be `false` on one DK that acts as receiver, `true` for the transmitter.
+- connect 2.08 of `TRANSMITTER` DK to 2.07 or `RECEIVER` dk. Probe `2.08` on the `RECEIVER` dk to see an echo of what it's receiving.
 
 You will see `0x0BADC0DE` at the baud rate specified, it is *8 whatever you put in the .dts (3.686 Mbaud by default) every 200 ms.
 
