@@ -73,6 +73,7 @@ current-speed:
       - 250000
       - 460800
       - 921600
-      - 1000000```
+      - 1000000
+```
 
 Anything more granular will require [`deferred-init`](https://docs.zephyrproject.org/latest/kernel/drivers/index.html#deferred-initialization) and manually adjusting the `BAUDRATE` register, until that file is changed or something else is offered.
