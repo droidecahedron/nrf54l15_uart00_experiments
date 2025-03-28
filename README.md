@@ -39,6 +39,8 @@ port.pin | desc
 
 You will see `0x0BADC0DE` at the baud rate specified, it is *8 whatever you put in the .dts (3.686 Mbaud by default) every 200 ms.
 
+![image](https://github.com/user-attachments/assets/aa9d2d20-8e01-49e3-883e-ef616e97ad2c)
+
 ![image](https://github.com/user-attachments/assets/720715ce-9acd-43e5-a8f2-87240ef7a35b)
 
 ![image](https://github.com/user-attachments/assets/ddec710c-ddc1-4203-bdd3-fe30b4f07455)
