@@ -77,3 +77,5 @@ current-speed:
 ```
 
 Anything more granular will require [`deferred-init`](https://docs.zephyrproject.org/latest/kernel/drivers/index.html#deferred-initialization) and manually adjusting the `BAUDRATE` register, until that file is changed or something else is offered.
+
+In a future SDK version, it's probably 'fixed' until something proper comes. [`pull/20178`](https://github.com/nrfconnect/sdk-nrf/pull/20178/files#diff-9a3efba17f0e7baa12416886f1e02d9a62791b6c8dc9920d87b18c390583c5fa)
