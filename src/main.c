@@ -14,11 +14,12 @@
 #include <zephyr/sys/printk.h>
 #include <zephyr/drivers/uart.h>
 
-
-#define SLEEP_TIME_MS 20
-#define RECEIVE_BUF_SIZE 8
+#define SLEEP_TIME_MS 200
+#define RECEIVE_BUF_SIZE 10
 #define TRANSMIT_BUF_SIZE 8
-#define RECEIVE_TIMEOUT 100
+#define RECEIVE_TIMEOUT 1000
+
+#define TRANSMITTER false
 
 const struct device *uart = DEVICE_DT_GET(DT_NODELABEL(uart00));
 static uint8_t rx_buf[RECEIVE_BUF_SIZE] = {0};
@@ -32,13 +33,13 @@ static void uart_cb(const struct device *dev, struct uart_event *evt, void *user
         case UART_TX_ABORTED:
                 break;
         case UART_RX_RDY:
+                uart_tx(uart, evt->data.rx.buf, evt->data.rx.len, 2000);
                 break;
         case UART_RX_BUF_REQUEST:
                 break;
         case UART_RX_BUF_RELEASED:
                 break;
         case UART_RX_DISABLED:
-                
                 uart_rx_enable(dev, rx_buf, sizeof rx_buf, RECEIVE_TIMEOUT);
                 break;
         case UART_RX_STOPPED:
@@ -60,12 +61,25 @@ int main(void)
         {
                 return 2;
         }
-        
-        
-        while(1)
+        uart_rx_enable(uart, rx_buf, sizeof rx_buf, RECEIVE_TIMEOUT);
+
+        if (!TRANSMITTER)
         {
                 ret = uart_tx(uart, tx_buf, sizeof(tx_buf), SYS_FOREVER_MS);
-                k_msleep(SLEEP_TIME_MS);
+                k_msleep(10);
+                while (1)
+                {
+                        k_yield();
+                }
         }
+        else
+        {
+                for(;;)
+                {
+                        ret = uart_tx(uart, tx_buf, sizeof(tx_buf), SYS_FOREVER_MS);
+                        k_msleep(SLEEP_TIME_MS);
+                }
+        }
+
         return 0;
 }
