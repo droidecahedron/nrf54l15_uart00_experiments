@@ -19,7 +19,7 @@
 #define TRANSMIT_BUF_SIZE 8
 #define RECEIVE_TIMEOUT 1000
 
-#define TRANSMITTER false
+#define TRANSMITTER true
 
 const struct device *uart = DEVICE_DT_GET(DT_NODELABEL(uart00));
 static uint8_t rx_buf[RECEIVE_BUF_SIZE] = {0};
