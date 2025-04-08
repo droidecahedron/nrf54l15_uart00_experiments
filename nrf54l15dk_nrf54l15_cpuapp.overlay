@@ -10,6 +10,7 @@
     pinctrl-1 = <&uart00_sleep>;
     pinctrl-names = "default", "sleep";
     //hw-flow-control;
+    zephyr,deferred-init;
 };
 
 &pinctrl {

@@ -52,14 +52,19 @@ static void uart_cb(const struct device *dev, struct uart_event *evt, void *user
 int main(void)
 {
         int ret = 0;
+        ret =  device_init(uart);
+        if(ret)
+        {
+                return 1; // unable to init
+        }
         if (!device_is_ready(uart))
         {
-                return 1;
+                return 2; // dev not ready
         }
         ret = uart_callback_set(uart, uart_cb, NULL);
         if (ret)
         {
-                return 2;
+                return 3; // issue setting cb (check irq_conn)
         }
         uart_rx_enable(uart, rx_buf, sizeof rx_buf, RECEIVE_TIMEOUT);
 
