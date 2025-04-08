@@ -1,6 +1,11 @@
 # >1MBaud on 54L15
 `NCS SDK Ver 2.9.0`
 
+# DEFERRED_INIT!
+![image](https://github.com/user-attachments/assets/464ac6c2-5bfe-4aa6-b346-51520f61e9fa)
+
+Breakpoint device_init fn in main. Seen above is line low before manual init, then peripheral inits when you call it.
+
 Port2 for uart00, uart00 only one that can get higher peripheral CLK (128MHz)
 ## [INSTANCES](https://docs.nordicsemi.com/bundle/ps_nrf54L15/page/uarte.html#d1900e528)
 
